@@ -8,6 +8,7 @@ public class Gamemanager : MonoBehaviour
 {
     [SerializeField] TMP_Text _scoretext;
     public int _score = 0;
+    [SerializeField]List<Mogura> _moguraList;
     // Start is called before the first frame update
     void Start()
     {
