@@ -9,10 +9,12 @@ public class Mogura : MonoBehaviour
     [SerializeField] Animator _anim;
     Gamemanager _gm;
     [SerializeField]bool _click = true;
+    Collider _co;
 
     // Start is called before the first frame update
     void Start()
     {
+        _co = GetComponent<Collider>();
         _gm = FindObjectOfType<Gamemanager>();
         _time = Random.Range(3,7);
     }
@@ -20,7 +22,6 @@ public class Mogura : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         
         if(_time < _timer)
         {
@@ -35,7 +36,7 @@ public class Mogura : MonoBehaviour
             RaycastHit hit = new RaycastHit();
             if(Physics.Raycast(ray,out hit))
             {
-                if (hit.collider.gameObject.tag == "mogura")
+                if (hit.collider == _co)
                 {
                     OnClick();
                 }
@@ -48,7 +49,6 @@ public class Mogura : MonoBehaviour
         if(_click)
         {
             _gm.ScoreAdd();
-            _gm._score++;
             _click = false;
         }
         Debug.Log("ƒNƒŠƒbƒN‚³‚ê‚½");
